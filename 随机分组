@@ -1,0 +1,50 @@
+from random import shuffle
+num=0
+while not num==5:
+
+    list1 = ["贾士贤", "张贸惟", "宋整赫", "顾佳奇", "王柏捷", "邓皓勇", "刘原", "廖梦哲", "白子轩", "刘一凡", "刘高远", "公晨阳"]
+    shuffle(list1)
+    n = 6
+    m = int(len(list1) / n)
+    list2 = []
+    for i in range(0, len(list1), m):
+        list2.append(list1[i:i + m])
+    # print(list2)
+    list3 = ["王梓棋", "李睿萌", "邱子悦", "程璐明", "朱佳宁", "谢佳晨", "王子悦", "章毓翀", "韩佳洋", "周诗沁", "杨雨松", "唐雨琛", "吴昕瑶", "王利丹", "辛美璇",
+             "任冰", "李思然", "闫冬涵"]
+    shuffle(list3)
+    n = 6
+    m = int(len(list3) / n)
+    list4 = []
+    for i in range(0, len(list3), m):
+        list4.append(list3[i:i + m])
+
+    a = list2[1] + list4[1]
+    b = list2[2] + list4[2]
+    c = list2[3] + list4[3]
+    d = list2[4] + list4[4]
+    e = list2[5] + list4[5]
+    f = list2[0] + list4[0]
+    t = ["刘高远", "邱子悦"]
+    s = ["邱子悦", "刘高远"]
+    n1 = [v for v in a if v in t]
+    n2 = [v for v in b if v in t]
+    n3 = [v for v in c if v in t]
+    n4 = [v for v in d if v in t]
+    n5 = [v for v in e if v in t]
+    n6 = [v for v in f if v in t]
+    all = [n1, n2, n3, n4, n5, n6]
+    num=0
+    for i in all:
+        if i == t or i == s:
+            break
+        else:
+            num = num + 1
+
+print("1组：",list2[1]+list4[1])
+print("2组：",list2[2]+list4[2])
+print("3组：",list2[3]+list4[3])
+print("4组：",list2[4]+list4[4])
+print("5组：",list2[5]+list4[5])
+print("6组：",list2[0]+list4[0])
+
