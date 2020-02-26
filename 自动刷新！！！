@@ -1,0 +1,26 @@
+import webbrowser
+import time,os
+ 
+num = 1
+#num控制打开多少次，这个是10次
+while num :
+    num += 1
+    #控制多长时间打开一次
+    time.sleep(0.01)
+    webbrowser.open("https://v.douyin.com/GnrfRN/", 0, False)
+    #控制打开多少次，这个是10次
+    if num == 2:
+        """
+        如果你知道进程名称可以用taskkill
+        命令：
+        命令语法：taskkill / IM
+        进程名
+        比如：
+        1，关闭谷歌浏览器：taskkill / IM chrome.exe
+        2，关闭火狐浏览器：taskkill / IM firefox.exe
+        3，关闭IE：taskkill / IM Iexplore.exe
+        注意：一个程序可能在系统中生成多个进程。可以用tasklist命令查看系统中所有进程
+        """
+        counter = 1
+        #关闭谷歌浏览器，防止内存不足
+        os.system('taskkill / IM chrome.exe')
