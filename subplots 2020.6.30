@@ -1,0 +1,58 @@
+import seaborn as sns 
+import numpy as np
+import matplotlib.pyplot as plt
+import pandas as pd
+import matplotlib.dates as mdates
+import time
+plt.rcParams['figure.figsize'] = (30, 18.54)
+plt.rcParams['image.cmap'] = 'Red'
+plt.rcParams.update({"font.size":23,'font.weight' : 'normal'})
+sns.set_style("whitegrid")
+names=["Date","Case1","Case2","Case3","Case4","Case5"]
+Ref=pd.read_csv("/home/gcywcsyxx/perftest-ref-report-13d.csv",names=names)
+Exp=pd.read_csv("/home/gcywcsyxx/12.csv",names=names)
+plt.subplots_adjust(hspace=0.4,wspace=0.4)
+plt.subplot(2,1,1)
+dates = list(Exp["Date"])
+dates = [ str(x) for x in dates ]
+date =list((datetime.strptime(a, '%Y%m%d').strftime('%m/%d/%Y') for a in dates)) 
+
+plt.plot(Exp['Date'],Exp['Case1'],label='Case1',linestyle='--',linewidth=5.0)
+plt.plot(Exp['Date'],Exp['Case2'],label='Case2',linestyle='--',linewidth=5.0)
+plt.plot(Exp['Date'],Exp['Case3'],label='Case3',linestyle='--',linewidth=5.0)
+plt.plot(Exp['Date'],Exp['Case4'],label='Case4',linestyle='--',linewidth=5.0)
+plt.plot(Exp['Date'],Exp['Case5'],label='Case5',linestyle='--',linewidth=5.0)
+
+font1 = {
+'weight' : 'normal',
+'size'   : 35
+}
+plt.xlabel('Date',font1)
+plt.ylabel('value',font1)
+Bar_Compare=Ref.append(Exp.iloc[-1])
+ 
+plt.legend()
+font2 = {
+'weight' : 'normal',
+'size'   : 20}
+plt.subplot(2,5,6)
+sns.barplot(x="Date",y="Case1",data=Bar_Compare)
+plt.xlabel('Case1',font2)
+plt.ylabel('value',font2)
+plt.subplot(2,5,7)
+sns.barplot(x="Date",y="Case2",data=Bar_Compare)
+plt.xlabel('Case2',font2)
+plt.ylabel('value',font2)
+plt.subplot(2,5,8)
+sns.barplot(x="Date",y="Case3",data=Bar_Compare)
+plt.xlabel('Case3',font2)
+plt.ylabel('value',font2)
+plt.subplot(2,5,9)
+sns.barplot(x="Date",y="Case4",data=Bar_Compare)
+plt.xlabel('Case4',font2)
+plt.ylabel('value',font2)
+plt.subplot(2,5,10)
+sns.barplot(x="Date",y="Case5",data=Bar_Compare)
+plt.xlabel('Case5',font2)
+plt.ylabel('value',font2)
+plt.show()
