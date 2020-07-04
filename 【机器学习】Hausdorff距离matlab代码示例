@@ -1,0 +1,23 @@
+%Hausdorff距离  豪斯多夫距离  matlab代码示例
+clear all;
+close all;
+clc;
+
+p1=rand(1000,2);
+p2=rand(500,2)+1;
+plot(p1(:,1),p1(:,2),".");
+hold on;
+plot(p2(:,1),p2(:,2),"r.");
+
+d=zeros(length(p1),1);
+for i =1 : length(p1)
+    t=p2-p1(i,:);
+    d(i)=min(sqrt (t(:,1).^2+t(:,2).^2));
+end
+hab=max(d)
+for i=1:length(p2)
+    t=p1-p2(i,:);
+    d(i)=min(sqrt(t(:,1).^2+t(:,2).^2));
+end 
+hba=max(d)
+hba
